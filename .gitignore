@@ -1,0 +1,15 @@
+# IDEs
+.idea/
+.vscode/
+
+# Python
+venv/
+.venv/
+__pycache__/
+
+# PlatformIO
+.pio
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
