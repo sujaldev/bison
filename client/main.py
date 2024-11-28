@@ -116,3 +116,4 @@ def absolute_area_under_curve(queue: deque[float], window: int):
 ani = animation.FuncAnimation(fig, animate, interval=10)
 plt.get_current_fig_manager().resize(1920, 1080)
 plt.show()
+serial.close()
