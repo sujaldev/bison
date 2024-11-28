@@ -8,7 +8,7 @@
 Adafruit_MPU6050 mpu;
 
 void setup() {
-    Serial.begin(500000);
+    Serial.begin(1000000);
     while (!Serial)
         delay(10); // will pause Zero, Leonardo, etc until serial console opens
 
