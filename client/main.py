@@ -10,6 +10,7 @@ import matplotlib.animation as animation
 MAX_BUFFER = 10  # maximum number of data points to keep in view (autoscroll to right).
 NOISE_THRESHOLD = 0.04
 ROTATION_TIMEOUT = 2
+CURVE_AREA_THRESHOLD = 200  # chosen by trial and error
 
 # Setup serial
 serial = Serial(port="/dev/ttyUSB0", baudrate=1000000)
@@ -78,7 +79,7 @@ def process_data():
     # with a lower magnitude and thus a lower area under the curve for the last
     # n data points as compared to an actual revolution of the pedal which will
     # cause a slope with a larger magnitude.
-    if absolute_area_under_curve(slope_buffer, 5) < 100:  # 100 was chosen by trial and error
+    if absolute_area_under_curve(slope_buffer, 5) < CURVE_AREA_THRESHOLD:
         rpm = 0
         return
 
@@ -111,6 +112,7 @@ def absolute_area_under_curve(queue: deque[float], window: int):
     return sum([abs(queue[i]) for i in range(-1, -window - 1, -1)])
 
 
+# noinspection PyTypeChecker
 ani = animation.FuncAnimation(fig, animate, interval=10)
 plt.get_current_fig_manager().resize(1920, 1080)
 plt.show()
