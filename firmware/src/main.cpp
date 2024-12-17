@@ -56,13 +56,6 @@ void loop() {
     Serial.print(acceleration.acceleration.z);
     Serial.print(" ");
 
-    Serial.print(rotation.gyro.x);
-    Serial.print(" ");
-    Serial.print(rotation.gyro.y);
-    Serial.print(" ");
-    Serial.print(rotation.gyro.z);
-    Serial.print(" ");
-
     Serial.println(scale.get_units());
     delay(100);
 }
